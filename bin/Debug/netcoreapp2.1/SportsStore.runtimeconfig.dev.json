@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\mrino\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\mrino\\.nuget\\packages"
+    ]
+  }
+}
