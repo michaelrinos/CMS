@@ -1,3 +1,8 @@
 *.dll
 *.g.cs
 *.pdb
+/obj/Debug/netcoreapp2.1/SportsStore.AssemblyInfo.cs
+/obj/Debug/netcoreapp2.1/SportsStore.AssemblyInfoInputs.cache
+/obj/Debug/netcoreapp2.1/SportsStore.assets.cache
+/obj/Debug/netcoreapp2.1/SportsStore.RazorAssemblyInfo.cache
+/obj/Debug/netcoreapp2.1/SportsStore.RazorAssemblyInfo.cs
