@@ -93,12 +93,21 @@ namespace SportsStore {
                     }
                 );
                 routes.MapRoute(
+                    name: "Dynamic",
+                    template: "",
+                    defaults: new {
+                        controller = "Dynamic",
+                        action = "Index"
+                    });
+                /*
+                routes.MapRoute(
                     name: null,
                     template: "",
                     defaults: new {
                         controller = "Product", action = "List",
                         productPage = 1
                     });
+                // */
             
             
 

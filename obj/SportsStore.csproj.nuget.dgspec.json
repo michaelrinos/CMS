@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mrino\\Documents\\Git\\SportsStore\\SportsStore\\SportsStore.csproj": {}
+    "C:\\Git\\CMS\\SportsStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mrino\\Documents\\Git\\SportsStore\\SportsStore\\SportsStore.csproj": {
+    "C:\\Git\\CMS\\SportsStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mrino\\Documents\\Git\\SportsStore\\SportsStore\\SportsStore.csproj",
+        "projectUniqueName": "C:\\Git\\CMS\\SportsStore.csproj",
         "projectName": "SportsStore",
-        "projectPath": "C:\\Users\\mrino\\Documents\\Git\\SportsStore\\SportsStore\\SportsStore.csproj",
-        "packagesPath": "C:\\Users\\mrino\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mrino\\Documents\\Git\\SportsStore\\SportsStore\\obj\\",
+        "projectPath": "C:\\Git\\CMS\\SportsStore.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "C:\\Git\\CMS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mrino\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

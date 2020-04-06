@@ -1,3 +1,5 @@
 *.dll
 *.g.cs
 *.pdb
+/bin/Debug/netcoreapp2.1/SportsStore.Views.pdb
+/bin/Debug/netcoreapp2.1/SportsStore.Views.pdb

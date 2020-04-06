@@ -6,9 +6,12 @@
           asp-href-include="/lib/bootstrap/**/*.min.css"
           asp-href-exclude="**/*-reboot*,**/*-grid*" />
     <link rel="stylesheet"
-          asp-href-include="/lib/font-awesome/css/*.css"
-          />
+          asp-href-include="/lib/font-awesome/css/*.css" />
     <title>SportsStore</title>
+    <script src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery"
+            >
+    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse bg-inverse" role="navigation">
@@ -29,4 +32,5 @@
         </div>
     </div>
 </body>
+
 </html>

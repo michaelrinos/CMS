@@ -12,6 +12,15 @@ namespace SportsStore.Models {
         public static void EnsurePopulated(IApplicationBuilder app) {
             ApplicationDbContext context = app.ApplicationServices.GetRequiredService<ApplicationDbContext>();
             context.Database.Migrate();
+            EnsureProducts(context);
+            //EnsureViews(context);
+        }
+
+        private static void EnsureViews(ApplicationDbContext context) {
+
+        }
+
+        private static void EnsureProducts(ApplicationDbContext context) {
             if (!context.Products.Any()) {
                 context.Products.AddRange(
                 new Product {
@@ -61,6 +70,8 @@ namespace SportsStore.Models {
                 );
                 context.SaveChanges();
             }
+
         }
+
     }
 }
