@@ -44,7 +44,6 @@
 
 
     <div class="container">
-        <h1>Bootstrap tab panel example (using nav-pills) </h1>
         <div class="row">
             <div class="col-xs-12">
 
@@ -54,36 +53,37 @@
 
     </div>
     <div id="exTab1" class="container">
-        <ul class="nav nav-pills">
-            <li class="active">
 
-
-                <a href="#1a" data-toggle="tab">HTML</a>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#HTML">HTML</a>
             </li>
-            <li>
-                <a href="#2a" data-toggle="tab">CSS</a>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#CSS">CSS</a>
             </li>
-            <li>
-                <a href="#3a" data-toggle="tab">JavaScript</a>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#JavaScript">JavaScript</a>
             </li>
-
         </ul>
 
-        <div class="tab-content clearfix">
-            <div class="tab-pane active" id="1a">
-                <h1> This is html</h1>
+        <div class="tab-content" id="tabs">
+            <div class="tab-pane fade in active" id="HTML">
+                <h1> HTML </h1>
                 <textarea class="" id="html" placeholder="HTML"></textarea>
             </div>
-            <div class="tab-pane" id="2a">
+            <div class="tab-pane fade" id="CSS">
                 <h1> CSS</h1>
                 <textarea id="css" placeholder="CSS"></textarea>
             </div>
-            <div class="tab-pane" id="3a">
+            <div class="tab-pane fade" id="JavaScript">
                 <h1> JavaScript </h1>
                 <textarea id="js" placeholder="JavaScript"></textarea>
             </div>
         </div>
+
+
     </div>
+
 
     <hr>
     <hr>
@@ -103,20 +103,22 @@
         value: "<h1> Welcome </h1>",
         theme: "3024-night"
     });
-    /*
-    var editorCSS = CodeMirror.fromTextArea($('#css')[0], {
-        mode: "text/css",
-        lineNumbers: true,
-        matchBrackets: true,
-        theme: "3024-night"
-    });
 
-    var editorJavaScript = CodeMirror.fromTextArea($("#js")[0], {
-        mode: "text/javascript",
+    var editorCSS = CodeMirror.fromTextArea(document.getElementById('css'), {
+        mode: "xml",
         lineNumbers: true,
         matchBrackets: true,
         theme: "3024-night"
     });
+    var editorJavaScript = CodeMirror.fromTextArea(document.getElementById("js"), {
+        mode: "xml",
+        lineNumbers: true,
+        matchBrackets: true,
+        theme: "3024-night"
+    });
+    editorCSS.refresh();
+    editorHTML.refresh();
+    editorJavaScript.refresh();
     // */
     editorHTML.on("keyup", documentChanges);
     //editorCSS.on("change", documentChanges());
