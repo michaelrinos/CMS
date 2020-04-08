@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace SportsStore.Models {
-        /*
     public class EFViewsRepository : IViewRepository, IFileProvider {
         private ApplicationDbContext context;
 
@@ -23,7 +22,5 @@ namespace SportsStore.Models {
         public IChangeToken Watch(string filter) {
             throw new NotImplementedException();
         }
-
     }
-    // */
 }

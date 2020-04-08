@@ -12,5 +12,10 @@ namespace SportsStore.Controllers
         {
             return View("Editor");
         }
+
+        [HttpPost]
+        public ViewResult SaveItem() {
+            return View("Editor");
+        }
     }
 }

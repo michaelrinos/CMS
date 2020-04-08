@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet"
-          asp-href-include="/lib/bootstrap/**/*.min.css"
+          asp-href-include="/lib/twitter-bootstrap/css/bootstrap_dark.min.css"
           asp-href-exclude="**/*-reboot*,**/*-grid*" />
     <link rel="stylesheet"
           asp-href-include="/lib/font-awesome/css/*.css" />
@@ -11,26 +11,44 @@
     <script src="~/lib/jquery/dist/jquery.min.js"
             asp-fallback-test="window.jQuery"
             ></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js">
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js">
     </script>
 </head>
 <body>
-    <div class="navbar navbar-inverse bg-inverse" role="navigation">
-        <div class="row">
-            <a class="col navbar-brand" href="#">SPORTS STORE</a>
-            <div class="col-4 text-right">
-                @await Component.InvokeAsync("CartSummary")
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown link
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </div>
+        </nav>
     </div>
-    <div class="row m-1 p-1">
-        <div id="categories" class="col-3">
-            @await Component.InvokeAsync("NavigationMenu")
-
-        </div>
-        <div class="col-9">
-            @RenderBody()
-        </div>
+    <hr />
+    <div class="container">
+        @RenderBody()
     </div>
 </body>
 

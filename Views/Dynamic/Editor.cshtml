@@ -3,10 +3,7 @@
     ViewData["Title"] = "Editor";
 }
 
-<h2>Editor</h2>
-
-
-<style>
+ <style>
     body {
         margin: 0;
     }
@@ -40,21 +37,10 @@
 </head>
 
 <body>
-
-
-
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-
-            </div>
-
-        </div>
-
-    </div>
+    <form asp-action="SaveItem" method="post">
     <div id="exTab1" class="container">
 
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <ul class="nav nav-tabs " id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#HTML">HTML</a>
             </li>
@@ -67,16 +53,13 @@
         </ul>
 
         <div class="tab-content" id="tabs">
-            <div class="tab-pane fade in active" id="HTML">
-                <h1> HTML </h1>
+            <div class="tab-pane in active" id="HTML">
                 <textarea class="" id="html" placeholder="HTML"></textarea>
             </div>
             <div class="tab-pane fade" id="CSS">
-                <h1> CSS</h1>
                 <textarea id="css" placeholder="CSS"></textarea>
             </div>
             <div class="tab-pane fade" id="JavaScript">
-                <h1> JavaScript </h1>
                 <textarea id="js" placeholder="JavaScript"></textarea>
             </div>
         </div>
@@ -84,10 +67,11 @@
 
     </div>
 
-
     <hr>
     <hr>
     <iframe id="code"></iframe>
+        <button type="submit">Save</button>
+    </form>
 
 </body>
 
@@ -121,8 +105,8 @@
     editorJavaScript.refresh();
     // */
     editorHTML.on("keyup", documentChanges);
-    //editorCSS.on("change", documentChanges());
-    //editorJavaScript.on("change", documentChanges());
+    editorCSS.on("change", documentChanges);
+    editorJavaScript.on("change", documentChanges);
     $(document).ready(function () {
         $("#code").on("load", function() {
             var head = $("#code").contents().find("head");
@@ -141,17 +125,16 @@
 
         var html = editorHTML.getValue();
 
-        //var css = editorCSS.getValue();
-        //var js = editorJavaScript.getValue();
-        if (html) {
-            var code = document.getElementById("code").contentWindow.document;
-            code.open();
-            code.writeln(html);
+        var css = editorCSS.getValue();
+        var js = editorJavaScript.getValue();
+        var code = document.getElementById("code").contentWindow.document;
+        code.open();
+        //code.writeln(html);
+        if (html)
 
 
-            //code.writeln(html.value + "<style>" + css.value + "</style>" + "<script>" + js.value + "<//script>");
-            code.close();
-        }
+        code.writeln(html+ "<style>" + css + "</style>" + "<script>" + js + "<\/script>");
+        code.close();
     };
 
 </script>
