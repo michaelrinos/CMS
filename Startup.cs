@@ -33,7 +33,7 @@ namespace SportsStore {
                 options.UseSqlServer(
                 Configuration["Data:SportStoreProducts:ConnectionString"]));
             services.AddTransient<IProductRepository, EFProductRepository>();
-            services.AddTransient<IContentRepository, FakeContentRepoository>();
+            services.AddTransient<IViewRepository, EFViewsRepository>();
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -92,6 +92,13 @@ namespace SportsStore {
                         action = "List", productPage = 1
                     }
                 );
+                routes.MapRoute(
+                    name: "DynamicParameter",
+                    template: "{ view }",
+                    defaults: new {
+                        controller = "Dynamic",
+                        action = "Index"
+                    });
                 routes.MapRoute(
                     name: "Dynamic",
                     template: "",

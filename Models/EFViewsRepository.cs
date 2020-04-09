@@ -6,21 +6,15 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace SportsStore.Models {
-    public class EFViewsRepository : IViewRepository, IFileProvider {
+    public class EFViewsRepository : IViewRepository {
         private ApplicationDbContext context;
+
+        public EFViewsRepository(ApplicationDbContext ctx) {
+            context = ctx;
+        }
 
         public IQueryable<RazerView> Views => context.Views;
 
-        public IDirectoryContents GetDirectoryContents(string subpath) {
-            throw new NotImplementedException();
-        }
 
-        public IFileInfo GetFileInfo(string subpath) {
-            return Views.Where(x => x.Location == subpath).FirstOrDefault();
-        }
-
-        public IChangeToken Watch(string filter) {
-            throw new NotImplementedException();
-        }
     }
 }
