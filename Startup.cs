@@ -92,21 +92,22 @@ namespace SportsStore {
                         action = "List", productPage = 1
                     }
                 );
+
                 routes.MapRoute(
-                    name: "DynamicParameter",
-                    template: "{ view }",
-                    defaults: new {
+                    name: "defaultDynamic",
+                    template: "Editor",
+                    defaults: new { 
                         controller = "Dynamic",
-                        action = "Index"
+                        action= "Editor"
                     });
                 routes.MapRoute(
-                    name: "Dynamic",
-                    template: "",
-                    defaults: new {
+                    name: "default",
+                    template: "{controller}/{action}",
+                    defaults: new { 
                         controller = "Dynamic",
-                        action = "Index"
+                        action = "Index" 
                     });
-                /*
+
                 routes.MapRoute(
                     name: null,
                     template: "",
@@ -115,11 +116,6 @@ namespace SportsStore {
                         productPage = 1
                     });
                 // */
-            
-            
-
-
-            routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
             });
             /*
             app.UseMvc(routes => {

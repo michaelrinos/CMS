@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 using SportsStore.Models;
 
 namespace SportsStore.Controllers
@@ -25,17 +26,22 @@ namespace SportsStore.Controllers
 
 
 
-        public IActionResult Index(string view = "")
+        public IActionResult Index()
         {
-            if (string.IsNullOrEmpty(view)) {
-                return View(repository.Views.Where(x => x.Location == "NotSpecified").FirstOrDefault() );
-            } else
-                return View(repository.Views.Where(x => x.Location == view).FirstOrDefault());
-            
+            return View();
+        }
+
+        public IActionResult Editor() {
+            return View("Editor");
+        }
+
+        public IActionResult Search(string searchItems) {
+
+            return View();
         }
 
         [HttpPost]
-        public ViewResult SaveItem() {
+        public ViewResult SaveItem(RazerView view) {
             return View("Editor");
         }
     }

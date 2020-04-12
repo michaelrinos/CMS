@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 namespace SportsStore.Models {
     public class DatabaseFileInfo : IFileInfo {
         private string _viewPath;
+        private string _contents;
         private byte[] _viewContent;
         private DateTimeOffset _lastModified;
         private bool _exists;
@@ -52,12 +53,13 @@ namespace SportsStore.Models {
                         _exists = reader.HasRows;
                         if (_exists) {
                             reader.Read();
+                            _contents = reader["Content"].ToString();
                             _viewContent = Encoding.UTF8.GetBytes(reader["Content"].ToString());
                             _lastModified = Convert.ToDateTime(reader["LastModified"]);
                         }
                     }
                 }
-            } catch (Exception ex) {
+            } catch (Exception ) {
 
                 // if something went wrong, Exists will be false
             }

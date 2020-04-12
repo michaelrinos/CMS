@@ -8,7 +8,7 @@
 GO
 
 insert into [SportsStore].[dbo].[Views] (Location, LastModified, Content)
-  Values ( N'/NotSpecified.cshtml', GETDATE(), N'<h1>
+  Values ( N'/NotSpecified.cshtml', GETDATE(), '<h1>
 Oops.
 </h1>
 <p>
@@ -20,7 +20,6 @@ insert into [SportsStore].[dbo].[Views] (location, LastModified, Content)
     body {
         text-align: center;
     }
-
     textarea {
         width: 32%;
         float: top;
@@ -64,4 +63,5 @@ insert into [SportsStore].[dbo].[Views] (location, LastModified, Content)
             code.close();
         };
     }
-    compile();</script>' where Location = N'/Editor.cshtml'
+    compile();</script>'
+    )
