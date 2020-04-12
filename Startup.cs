@@ -62,7 +62,7 @@ namespace SportsStore {
             //app.UseCookiePolicy();
             app.UseSession();
             app.UseMvc(routes => {
-
+                /*
                 routes.MapRoute(
                     name: null,
                     template: "DynamicContent/{contentItem}",
@@ -84,6 +84,7 @@ namespace SportsStore {
                         action = "List", productPage = 1
                     }
                 );
+                
                 routes.MapRoute(
                     name: null,
                     template: "{category}",
@@ -92,28 +93,23 @@ namespace SportsStore {
                         action = "List", productPage = 1
                     }
                 );
+                // */
 
                 routes.MapRoute(
-                    name: "defaultDynamic",
-                    template: "Editor",
-                    defaults: new { 
+                    name: null,
+                    template: "{action}",
+                    defaults: new {
                         controller = "Dynamic",
-                        action= "Editor"
+                        action = "Index",
+                        productPage = 1
                     });
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action}",
                     defaults: new { 
                         controller = "Dynamic",
                         action = "Index" 
-                    });
-
-                routes.MapRoute(
-                    name: null,
-                    template: "",
-                    defaults: new {
-                        controller = "Product", action = "List",
-                        productPage = 1
                     });
                 // */
             });

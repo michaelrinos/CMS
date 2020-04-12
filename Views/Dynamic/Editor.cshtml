@@ -4,9 +4,6 @@
 }
 
 <style>
-    body {
-        margin: 0;
-    }
 
     textarea {
         width: 100%;
@@ -78,6 +75,9 @@
 
 </html>
 <script src="~/lib/codemirror/codemirror.js"></script>
+<script src="~/lib/codemirror/mode/css/css.min.js"></script>
+<script src="~/lib/codemirror/mode/xml/xml.min.js"></script>
+<script src="~/lib/codemirror/mode/javascript/javascript.min.js"></script>
 <script>
 
     var editorHTML = CodeMirror.fromTextArea(document.getElementById("html"), {
@@ -90,13 +90,13 @@
     });
 
     var editorCSS = CodeMirror.fromTextArea(document.getElementById("css"), {
-        mode: "xml",
+        mode: "text/css",
         lineNumbers: true,
         matchBrackets: true,
         theme: "3024-night"
     });
     var editorJavaScript = CodeMirror.fromTextArea(document.getElementById("js"), {
-        mode: "xml",
+        mode: "javascript",
         lineNumbers: true,
         matchBrackets: true,
         theme: "3024-night"
@@ -111,15 +111,21 @@
     $(document).ready(function () {
         $("#code").on("load", function () {
             var head = $("#code").contents().find("head");
+
             var jquery = '<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">';
             var bootstrapcss = '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">';
             var bootstrapjs = '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"><\/script>';
+            /*
+            var jquery = '<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">';
+            var bootstrapcss = '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">';
+            var bootstrapjs = '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"><\/script>';
+            // */
 
 
 
-                    $(head).append(jquery);
-            $(head).append(bootstrapcss);
-            $(head).append(bootstrapjs);
+            $(head).append($("<link/>", { rel: "stylesheet", href: "~/lib/twitter-bootstrap/css/bootstrap_dark.min.css", type: "text/css" } ));
+            //$(head).append($("<link/>", { rel: "stylesheet", href: "/lib/font-awesome/css/*.css" , type: "text/css" } ));
+            $(head).append($("<script/>", { src: "~/lib/jquery/dist/jquery.min.js"} ));
         });
     });
 
