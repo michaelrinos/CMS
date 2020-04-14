@@ -27,7 +27,7 @@ namespace SportsStore.Models {
         public string Content { get => _Content; 
             set {
                 _Content = value;
-                _ContentBytes = Encoding.UTF8.GetBytes(value);
+                _ContentBytes = Encoding.UTF8.GetBytes(value ?? "");
             } 
         }
         public DateTimeOffset LastModified { get; set; }

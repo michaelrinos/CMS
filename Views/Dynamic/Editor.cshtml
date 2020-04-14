@@ -1,10 +1,9 @@
-﻿
+﻿@model RazerView
 @{
     ViewData["Title"] = "Editor";
 }
 
 <style>
-
     textarea {
         width: 100%;
         min-height: 100px;
@@ -34,43 +33,44 @@
 </head>
 
 <body>
-    <form asp-action="SaveItem" method="post">
-
-        <div id="exTab1" class="container">
-
-            <ul class="nav nav-tabs " id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#HTML">HTML</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#CSS">CSS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#JavaScript">JavaScript</a>
-                </li>
-            </ul>
-
-            <div class="tab-content" id="tabs">
-                <div class="tab-pane in active" id="HTML">
-                    <textarea class="" id="html" placeholder="HTML"></textarea>
-                </div>
-                <div class="tab-pane fade" id="CSS">
-                    <textarea id="css" placeholder="CSS"></textarea>
-                </div>
-                <div class="tab-pane fade" id="JavaScript">
-                    <textarea id="js" placeholder="JavaScript"></textarea>
-                </div>
-            </div>
-
-
+    <form id="viewForm" asp-action="SaveItem" method="post">
+        <textarea class="d-none" asp-for="Content"> </textarea>
+        <div class="form-group">
+            <label asp-for="Location"></label>
+            <input class="form-control" type="text" asp-for="Location" />
         </div>
+        
 
+        <ul class="nav nav-tabs " id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#HTML">HTML</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#CSS">CSS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#JavaScript">JavaScript</a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="tabs">
+            <div class="tab-pane in active" id="HTML">
+                
+                <textarea class="" id="html" placeholder="HTML"></textarea>
+            </div>
+            <div class="tab-pane fade" id="CSS">
+                <textarea id="css" placeholder="CSS"></textarea>
+            </div>
+            <div class="tab-pane fade" id="JavaScript">
+                <textarea id="js" placeholder="JavaScript"></textarea>
+            </div>
+        </div>
         <hr>
         <hr>
         <iframe id="code"></iframe>
         <button type="submit">Save</button>
-    </form>
 
+    </form>
 </body>
 
 </html>
@@ -105,9 +105,11 @@
     editorHTML.refresh();
     editorJavaScript.refresh();
     // */
+    /*
     editorHTML.on("keyup", documentChanges);
     editorCSS.on("change", documentChanges);
     editorJavaScript.on("change", documentChanges);
+    // */
     $(document).ready(function () {
         $("#code").on("load", function () {
             var head = $("#code").contents().find("head");
@@ -128,13 +130,19 @@
             $(head).append($("<script/>", { src: "~/lib/jquery/dist/jquery.min.js"} ));
         });
     });
+    window.setInterval(function () {
+        documentChanges();
+    }, 5000);
+
+    $("#viewForm").submit(documentChanges);
 
     function documentChanges() {
 
         var html = editorHTML.getValue();
-
         var css = editorCSS.getValue();
         var js = editorJavaScript.getValue();
+
+        $("#Content").val("<style>" + css + "</style>" + html + "<script>" + js + "<\/script>");
         var code = document.getElementById("code").contentWindow.document;
         code.open();
         //code.writeln(html);

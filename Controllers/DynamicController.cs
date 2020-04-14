@@ -32,7 +32,7 @@ namespace SportsStore.Controllers
         }
 
         public IActionResult Editor() {
-            return View("Editor");
+            return View(new RazerView());
         }
 
         public IActionResult Search(string searchItems) {
@@ -41,8 +41,12 @@ namespace SportsStore.Controllers
         }
 
         [HttpPost]
-        public ViewResult SaveItem(RazerView view) {
-            return View("Editor");
+        public ViewResult SaveView(RazerView view) {
+            if (ModelState.IsValid) {
+                repository.SaveView(view);
+                return View("Thanks");
+            }
+            return View();
         }
     }
 }
