@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.FileProviders;
+using SportsStore.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,30 +17,45 @@ namespace SportsStore.Models {
         private byte[] _ContentBytes;
         private string _Content;
 
+        private string _Html;
+        private string _Css;
+        private string _Js;
+
+
         #endregion // Fields
 
         public int RazerViewId { get; set; }
-        public string Location { get; set; }
+        public string Location { get; set; } = "";
 
         [NotMapped]
-        public byte[] ContentBytes { get => _ContentBytes; private set => _ContentBytes = value; }
+        [SqlQueryParameter(Ignore = true)]
+        public byte[] ContentBytes { get => Encoding.UTF8.GetBytes(Content); private set => _ContentBytes = value; }
+        [NotMapped]
+        [SqlQueryParameter(Ignore = true)]
+        public string Content { get => ( _Css ?? "" ) + ( _Html ?? ""  )+ ( _Js ?? "" ); }
+        public int HTMLContentId { get; set; }
+        public string HTMLContent { get => _Html ?? ""; set => _Html = value; }
+        public int CSSContentId { get; set; }
+        public string CSSContent { get => _Css ?? ""; set => _Css = value; }
+        public int JSContentId { get; set; }
+        public string JSContent { get => _Js ?? "" ; set => _Js = value; }
+        [NotMapped]
+        public string InsertBy { get; set; } = "NotSet";
 
-        public string Content { get => _Content; 
-            set {
-                _Content = value;
-                _ContentBytes = Encoding.UTF8.GetBytes(value ?? "");
-            } 
-        }
         public DateTimeOffset LastModified { get; set; }
 
+        [SqlQueryParameter(Ignore = true)]
         public DateTime? LastRequested { get; set; }
 
         [NotMapped]
+        [SqlQueryParameter(Ignore = true)]
         public bool Exists => Content == null ? false : true;
         [NotMapped]
+        [SqlQueryParameter(Ignore = true)]
         public bool IsDirectory => false;
 
         [NotMapped]
+        [SqlQueryParameter(Ignore = true)]
         public long Length {
             get {
                 using (var stream = new MemoryStream(this.ContentBytes)) {
@@ -48,9 +64,11 @@ namespace SportsStore.Models {
             }
         }
         [NotMapped]
+        [SqlQueryParameter(Ignore = true)]
         public string PhysicalPath => null;
 
         [NotMapped]
+        [SqlQueryParameter(Ignore = true)]
         public string Name => Path.GetFileName(Location);
 
         public Stream CreateReadStream() {

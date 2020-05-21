@@ -40,7 +40,7 @@ namespace SportsStore {
             services.AddMvc();
             services.Configure<RazorViewEngineOptions>(opts =>
                 opts.FileProviders.Add(
-                    new DatabaseFileProvider(Configuration.GetConnectionString("DefaultConnection"))
+                    new DatabaseFileProvider(Configuration.GetConnectionString("CMSConnection"))
                 )
             );
             services.AddMemoryCache();
@@ -97,11 +97,35 @@ namespace SportsStore {
 
                 routes.MapRoute(
                     name: null,
+                    template: "Editor/Location-{location}/Mode-{mode}",
+                    defaults: new {
+                        controller = "Dynamic",
+                        action = "Editor",
+                    });
+
+                routes.MapRoute(
+                    name: null,
+                    template: "Editor/Mode-{mode}",
+                    defaults: new {
+                        controller = "Dynamic",
+                        action = "Editor",
+                    });
+
+                routes.MapRoute(
+                    name: null,
+                    template: "Editor",
+                    defaults: new {
+                        controller = "Dynamic",
+                        action = "Editor",
+                        mode = ""
+                    });
+
+                routes.MapRoute(
+                    name: null,
                     template: "{action}",
                     defaults: new {
                         controller = "Dynamic",
                         action = "Index",
-                        productPage = 1
                     });
 
                 routes.MapRoute(
