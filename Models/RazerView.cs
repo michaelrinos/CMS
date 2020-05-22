@@ -32,11 +32,11 @@ namespace SportsStore.Models {
         public byte[] ContentBytes { get => Encoding.UTF8.GetBytes(Content); private set => _ContentBytes = value; }
         [NotMapped]
         [SqlQueryParameter(Ignore = true)]
-        public string Content { get => ( _Css ?? "" ) + ( _Html ?? ""  )+ ( _Js ?? "" ); }
+        public string Content { get => ( "<style>" +(_Css ?? "") +"</style>" ) + ( _Html ?? ""  )+ ( _Js ?? "" ); }
         public int HTMLContentId { get; set; }
         public string HTMLContent { get => _Html ?? ""; set => _Html = value; }
         public int CSSContentId { get; set; }
-        public string CSSContent { get => _Css ?? ""; set => _Css = value; }
+        public string CSSContent { get => (_Css.Contains("<style>") ? "<style>" + _Css + "</style>" : _Css) ?? ""; set => _Css = value; }
         public int JSContentId { get; set; }
         public string JSContent { get => _Js ?? "" ; set => _Js = value; }
         [NotMapped]

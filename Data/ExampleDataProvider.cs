@@ -14,7 +14,7 @@ namespace SportsStore.Data {
 
 
 		internal void UpdateRazerView(RazerView view) {
-			base.ExecuteProc("[dbo].[UpdateRazerView]", new { View = view });
+			base.ExecuteProc<RazerView>("[dbo].[UpdateRazerView]", view);
 		}
 
 		internal void CreateRazerView(RazerView view ){

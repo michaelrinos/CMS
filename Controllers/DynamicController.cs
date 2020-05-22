@@ -57,9 +57,9 @@ namespace SportsStore.Controllers
                     try {
                         var provider = new ExampleDataProvider(_Config.GetConnectionString("CMSConnection"));
                         var view = provider.GetRazerView(location) ?? provider.GetRazerViewLikeLocation(location);
-                        return View(mode + cshtml, view ?? new RazerView());
+                        return View(mode, view ?? new RazerView());
                     } catch (Exception) {
-                        return View(mode + cshtml, new RazerView());
+                        return View(mode, new RazerView());
                     }
                 }
             }
@@ -73,8 +73,17 @@ namespace SportsStore.Controllers
         [HttpPost]
         public ViewResult SaveView(RazerView view) {
             if (ModelState.IsValid) {
-                new ExampleDataProvider(_Config.GetConnectionString("CMSConnection")).CreateRazerView(view);
-                return View("Thanks");
+                var provider = new ExampleDataProvider(_Config.GetConnectionString("CMSConnection"));
+                var fromDb = provider.GetRazerView(view.RazerViewId) ?? provider.GetRazerView(view.Location) ?? provider.GetRazerViewLikeLocation(view.Location);
+                if (fromDb != default(RazerView)) {
+                    fromDb.HTMLContent  = view.HTMLContent;
+                    fromDb.JSContent    = view.JSContent;
+                    fromDb.CSSContent   = view.CSSContent;
+                    provider.UpdateRazerView(fromDb);
+                } else {
+                    provider.CreateRazerView(view);
+                }
+                return View("Thanks", view.Location);
             }
             return View();
         }

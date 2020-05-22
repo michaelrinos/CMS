@@ -53,8 +53,10 @@
         height: auto;
     }
     #Result .codeHeader {
-        background-color: none;
         margin-top: 20px;
+        background-color: transparent !important;
+    }
+    #Result {
         padding: 0;
     }
 </style>
@@ -88,12 +90,13 @@
             </div>
         </div>
 
-        <button type="submit">Save</button>
+        <button type="submit" class="btn btn-block btn-light">Save</button>
 
     </form>
 
     <div class="col-12" id="Result">
-        <h4 class="codeHeader">Result</h4>
+        <h4 class="codeHeader text-center">Result</h4>
+        <hr />
         <iframe id="code" ></iframe>
     </div>
 </div>

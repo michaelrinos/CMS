@@ -18,14 +18,14 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="/">Content Manager</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Features</a>
@@ -46,8 +46,8 @@
                             }
 
                             <a class="editor-style dropdown-item @(value == "Columns" ? "active" : "") " href="/Editor/Mode-Columns">Columns</a>
-                            <a class="editor-style dropdown-item @(value == "Bottom Result" ? "active" : "") " href="/Editor/Mode-Bottom">Bottom Result</a>
-                            <a class="editor-style dropdown-item @(value == "Right Result" ? "active" : "") " href="/Editor/Mode-Right">Right Result</a>
+                            <a class="editor-style dropdown-item @(value == "Bottom Result" ? "active" : "") " href="/Editor/Mode-EditorBottomResult">Bottom Result</a>
+                            <a class="editor-style dropdown-item @(value == "Right Result" ? "active" : "") " href="/Editor/Mode-RightResult">Right Result</a>
                             <a class="editor-style dropdown-item @(value == "Tabs (Columns)" ? "active" : "") " href="/Editor/Mode-TColumns">Tabs (Columns)</a>
                             <a class="editor-style dropdown-item @(value == "Tabs (Rows)" ? "active" : "") " href="/Editor/Mode-TRows">Tabs (Rows)</a>
                         </div>
