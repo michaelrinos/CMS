@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SportsStore.Models;
@@ -96,7 +90,15 @@ namespace SportsStore {
                 // */
 
                 routes.MapRoute(
-                    name: null,
+                    name: "Editor-M-L",
+                    template: "Editor/Mode-{mode}/Location-{location}",
+                    defaults: new {
+                        controller = "Dynamic",
+                        action = "Editor",
+                    });
+
+                routes.MapRoute(
+                    name: "Editor-L-M",
                     template: "Editor/Location-{location}/Mode-{mode}",
                     defaults: new {
                         controller = "Dynamic",
@@ -110,6 +112,13 @@ namespace SportsStore {
                         controller = "Dynamic",
                         action = "Editor",
                     });
+                routes.MapRoute(
+                    name: null,
+                    template: "Editor/Location-{location}",
+                    defaults: new {
+                        controller = "Dynamic",
+                        action = "Editor",
+                    });
 
                 routes.MapRoute(
                     name: null,
@@ -117,7 +126,6 @@ namespace SportsStore {
                     defaults: new {
                         controller = "Dynamic",
                         action = "Editor",
-                        mode = ""
                     });
 
                 routes.MapRoute(
@@ -144,7 +152,7 @@ namespace SportsStore {
                     template: "{controller=Product}/{action=List}/{id?}");
             });
             // */
-            SeedData.EnsurePopulated(app);
+            SeedData.EnsurePopulated(app, Configuration.GetConnectionString("CMSConnection"));
         }
     }
 }

@@ -22,10 +22,26 @@
         width: 100%;
         height: 35em;
     }
+    .codeHeader > .col-6:nth-child(2) {
+        padding: 0;
+    }
     .codeHeader {
-        background-color: black;
         margin: 0;
-        padding-left: 20px;
+        padding: 0;
+        background-color: black;
+        border-radius: 0.25rem 0.25rem 0 0;
+    }
+    .codeHeaderText {
+        font-size: 1.5rem;
+    }
+    .btn-hiden {
+        padding: .5rem 2rem;
+    }
+    .codeHeader .btn-hiden {
+        visibility: hidden;
+    }
+    .codeHeader:hover .btn-hiden{
+        visibility: visible;
     }
 </style>
 
@@ -37,17 +53,17 @@
 </head>
 
 <div class="container">
-    <div class="row"> 
-        <div class="col">
-            <button class="btn btn-primary btn-block toggle" onclick="preventDefault();">Toggle CSS</button>
-        </div>
-    </div>
     <form id="viewForm" asp-action="SaveView" method="post">
 
         <textarea class="d-none" asp-for="Content"> </textarea>
         <div class="form-group">
             <label asp-for="Location"></label>
             <input class="form-control" type="text" asp-for="Location" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Model"></label>
+            <input class="form-control" type="text" asp-for="Model" />
         </div>
         
 
@@ -67,7 +83,14 @@
         <div id="codeParent" class="">
         <div class="tab-content" id="tabs">
             <div class="tab-pane in active" id="HTML">
-                <h4 class="codeHeader">HTML</h4>
+                <div class="row codeHeader">
+                    <div class="col-6">
+                        <div class="codeHeaderText">HTML</div>
+                    </div>
+                    <div class="col-6">
+                        <button id="tidyHtml" type="button" data-CodeMirror="" class="btn btn-secondary btn-hiden float-right" onclick="autoFormatSelection(this);">Tidy</button>
+                    </div>
+                </div>
                 <textarea asp-for="@Model.HTMLContent"></textarea>
             </div>
             <div class="tab-pane" id="CSS">
@@ -102,6 +125,7 @@
         value: "<h1> Welcome </h1>",
         theme: "3024-night"
     });
+    //$('#tidyHtml').data("CodeMirror", editorHTML);
 
     var editorCSS = CodeMirror.fromTextArea(document.getElementById("CSSContent"), {
         mode: "text/css",

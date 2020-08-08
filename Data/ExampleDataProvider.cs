@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace SportsStore.Data {
     public class ExampleDataProvider : SqlDataProvider {
 		internal ExampleDataProvider(string connectionString) :
-			
             base(connectionString) { }
 
 
@@ -25,7 +24,15 @@ namespace SportsStore.Data {
 			return ExecuteProc<RazerView>("[dbo].[GetRazerView]", new { RazerViewId = razerViewId }).FirstOrDefault();
 		}
 
-		internal RazerView GetRazerView(string Location) {
+		internal int GetRazerViewCount() {
+			return ExecuteProc<int>("[dbo].[GetRazerViewCount]").FirstOrDefault();
+		}
+
+		internal ICollection<RazerView> GetAllRazerViews() {
+			return ExecuteProc<RazerView>("[dbo].[GetAllRazerViews]");
+        }
+
+        internal RazerView GetRazerView(string Location) {
 			return ExecuteProc<RazerView>("[dbo].[GetRazerViewByLocation]", new { Location = Location }).FirstOrDefault();
 		}
 		internal RazerView GetRazerViewLikeLocation(string Location) {

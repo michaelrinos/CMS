@@ -1,20 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
-using System.IO;
+using SportsStore.Data;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace SportsStore.Models {
     public static class SeedData {
-        public static void EnsurePopulated(IApplicationBuilder app) {
+        public static void EnsurePopulated(IApplicationBuilder app, string connectionString) {
             ApplicationDbContext context = app.ApplicationServices.GetRequiredService<ApplicationDbContext>();
             context.Database.Migrate();
             EnsureProducts(context);
             EnsureViews(context);
+            
+            EnsureViewsCMS(connectionString);
+        }
+
+        private static void EnsureViewsCMS(string con) {
+            var p = new ExampleDataProvider(con); 
+            if (! (p.GetRazerViewCount() > 0 ) ) {
+                var v = new RazerView() {
+                    Location = "Thanks.cshtml",
+                    HTMLContent = "  <div class=\"container\">    <div class=\"row text-center\">      <div class=\"col-12 yellow\">        <h1>       Congrats the view was saved!        </h1>      </div>      <div class=\"col-8 offset-2\">        <h4>You can click           <a href=\"/DisplayView?view=@Model\">here </a>          to dsplay the view.        </h4>      </div>    </div>      </div>",
+                    CSSContent = ".yellow { color: yellow;",
+                    Model = "@Model string",
+                    JSContent = string.Empty
+                };
+                p.CreateRazerView(v);
+                v.Location = "NotSpecified.cshtml";
+                v.HTMLContent = @"<h1>Oops.</h1><p>Looks like you forgot to specify which view we should show you.</p>";
+                v.CSSContent = string.Empty;
+                v.JSContent = string.Empty;
+                v.Model = string.Empty;
+                
+
+            }
+
         }
 
         private static void EnsureViews(ApplicationDbContext context) {

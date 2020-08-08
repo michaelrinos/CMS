@@ -44,10 +44,8 @@ namespace SportsStore.Controllers
             return View(view, new RazerView());
         }
 
-        public IActionResult Editor(string mode, string location = "") {
-            //return View(new RazerView());
+        public IActionResult Editor(string mode = "Editor", string location = "") {
             
-
             if (location == string.Empty && mode == string.Empty) { // We are creating a new model and we don't care about the view mode
                 return View(new RazerView());
             } else {
@@ -79,6 +77,7 @@ namespace SportsStore.Controllers
                     fromDb.HTMLContent  = view.HTMLContent;
                     fromDb.JSContent    = view.JSContent;
                     fromDb.CSSContent   = view.CSSContent;
+                    fromDb.Model        = view.Model;
                     provider.UpdateRazerView(fromDb);
                 } else {
                     provider.CreateRazerView(view);
