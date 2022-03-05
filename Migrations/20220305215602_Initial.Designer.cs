@@ -10,8 +10,8 @@ using SportsStore.Models;
 namespace SportsStore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200409003309_ChangeContent")]
-    partial class ChangeContent
+    [Migration("20220305215602_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -105,7 +105,7 @@ namespace SportsStore.Migrations
 
                     b.Property<DateTimeOffset>("LastModified");
 
-                    b.Property<DateTime>("LastRequested");
+                    b.Property<DateTime?>("LastRequested");
 
                     b.Property<string>("Location");
 

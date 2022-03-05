@@ -15,6 +15,9 @@ namespace SportsStore.Models {
 
         public IQueryable<RazerView> Views => context.Views;
 
-
+        public void SaveView(RazerView view)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
