@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[JSContent]
+(
+	[JSContentId] INT NOT NULL PRIMARY KEY IDENTITY(1, 1), 
+    [JSContent] NVARCHAR(MAX) NOT NULL, 
+    [InsertBy] NVARCHAR(50) NOT NULL, 
+    [LastModified] DATETIMEOFFSET NOT NULL
+)

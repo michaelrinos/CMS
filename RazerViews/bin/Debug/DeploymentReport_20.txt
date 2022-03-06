@@ -1,0 +1,29 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[CSSContent] (Table)
+       [dbo].[CSSContent_History] (Table)
+       [dbo].[HTMLContent] (Table)
+       [dbo].[HTMLContent_History] (Table)
+       [dbo].[JSContent] (Table)
+       [dbo].[JSContent_History] (Table)
+       [dbo].[RazerViews] (Table)
+       [dbo].[FK_CSSContentId_To_CSSContent] (Foreign Key)
+       [dbo].[FK_HTMLContentId_To_CSSContent] (Foreign Key)
+       [dbo].[FK_JSContentId_To_CSSContdent] (Foreign Key)
+       [dbo].[CreateRazerView] (Procedure)
+       [dbo].[GetRazerView] (Procedure)
+       [dbo].[GetRazerViewByLocation] (Procedure)
+       [dbo].[GetRazerViewLikeLocation] (Procedure)
+       [dbo].[UpdateRazerView] (Procedure)
+
+** Supporting actions

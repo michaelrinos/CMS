@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[CSSContent]
+(
+	[CSSContentId] INT NOT NULL PRIMARY KEY IDENTITY(1, 1), 
+    [CSSContent] NVARCHAR(MAX) NOT NULL, 
+    [InsertBy] NVARCHAR(50) NOT NULL, 
+    [LastModified] DATETIMEOFFSET NOT NULL
+)

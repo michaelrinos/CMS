@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="499c15fd-fadf-4868-8981-c924ea5551f3" ChangeDateTime="05/17/2020 10:24:55">
+    <Property Name="ElementName" Value="[dbo].[RazerViews].[Razer]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RazerViews]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RazerViewId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="56f9a1fd-4deb-44f5-a6ec-f15b40fe5f37" ChangeDateTime="05/17/2020 10:25:05">
+    <Property Name="ElementName" Value="[dbo].[RazerViews].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RazerViews]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RazerViewId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c5c21826-3f82-439d-aab9-e57a0298031c" ChangeDateTime="05/17/2020 10:39:50">
+    <Property Name="ElementName" Value="[dbo].[CSSContent].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[CSSContent]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CSSContentId" />
+  </Operation>
+</Operations>

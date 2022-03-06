@@ -1,0 +1,10 @@
+C:\Users\mrino\Documents\Git\SportsStore\RazerViews\bin\Debug\RazerViews.dacpac
+C:\Users\mrino\Documents\Git\SportsStore\RazerViews\bin\Debug\RazerViews.dll
+C:\Users\mrino\Documents\Git\SportsStore\RazerViews\bin\Debug\RazerViews.pdb
+C:\Users\mrino\Documents\Git\SportsStore\RazerViews\obj\Debug\RazerViews.sqlprojAssemblyReference.cache
+C:\Users\mrino\Documents\Git\SportsStore\RazerViews\obj\Debug\Model.xml
+C:\Users\mrino\Documents\Git\SportsStore\RazerViews\obj\Debug\refactor.xml
+C:\Users\mrino\Documents\Git\SportsStore\RazerViews\obj\Debug\postdeploy.sql
+C:\Users\mrino\Documents\Git\SportsStore\RazerViews\obj\Debug\predeploy.sql
+C:\Users\mrino\Documents\Git\SportsStore\RazerViews\obj\Debug\RazerViews.dll
+C:\Users\mrino\Documents\Git\SportsStore\RazerViews\obj\Debug\RazerViews.pdb
