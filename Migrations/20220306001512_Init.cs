@@ -52,6 +52,7 @@ namespace SportsStore.Migrations
                     RazerViewId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Location = table.Column<string>(nullable: true),
+<<<<<<<< HEAD:Migrations/20220306001512_Init.cs
                     Model = table.Column<string>(nullable: true),
                     HTMLContentId = table.Column<int>(nullable: false),
                     HTMLContent = table.Column<string>(nullable: true),
@@ -59,6 +60,9 @@ namespace SportsStore.Migrations
                     CSSContent = table.Column<string>(nullable: true),
                     JSContentId = table.Column<int>(nullable: false),
                     JSContent = table.Column<string>(nullable: true),
+========
+                    Content = table.Column<string>(nullable: true),
+>>>>>>>> 3c0fe2095633752f06aa8b239b59819a350bb96e:Migrations/20220305215602_Initial.cs
                     LastModified = table.Column<DateTimeOffset>(nullable: false),
                     LastRequested = table.Column<DateTime>(nullable: true)
                 },
