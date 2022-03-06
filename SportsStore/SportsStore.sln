@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMS", "CMS.csproj", "{78A1BF4C-5ACF-4470-8D4D-679E393BACAE}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CMS", "..\RazerViews\CMS.sqlproj", "{C9544B1A-5C03-44F9-8C47-F80D5236F832}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CMS Database", "..\RazerViews\CMS Database.sqlproj", "{C9544B1A-5C03-44F9-8C47-F80D5236F832}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
