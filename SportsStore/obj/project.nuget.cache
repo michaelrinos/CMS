@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sX1LH85V3yZS3Hs2cU+XSNhq9EEvVg09PnRjokF+UnxGubNlaoH5IENJHxOAI4MTYOwdHAefmUv64BUDgikWHQ==",
+  "dgSpecHash": "QAkLUtyZh8r/kfwJCRbNfT9teqIv06L48qDFg1Dt8EXpRse5jGvGZq9HZlN0d4J6YuAhaq5T/tHO5j23LEtNHg==",
   "success": true,
-  "projectFilePath": "C:\\Git\\SportsStore\\SportsStore\\CMS.csproj",
+  "projectFilePath": "C:\\Git\\SportsStore\\SportsStore\\SportsStore\\CMS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mrino\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\mrino\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",

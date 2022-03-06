@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Git\\SportsStore\\SportsStore\\CMS.csproj": {}
+    "C:\\Git\\SportsStore\\SportsStore\\SportsStore\\CMS.csproj": {}
   },
   "projects": {
-    "C:\\Git\\SportsStore\\SportsStore\\CMS.csproj": {
+    "C:\\Git\\SportsStore\\SportsStore\\SportsStore\\CMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Git\\SportsStore\\SportsStore\\CMS.csproj",
+        "projectUniqueName": "C:\\Git\\SportsStore\\SportsStore\\SportsStore\\CMS.csproj",
         "projectName": "CMS",
-        "projectPath": "C:\\Git\\SportsStore\\SportsStore\\CMS.csproj",
+        "projectPath": "C:\\Git\\SportsStore\\SportsStore\\SportsStore\\CMS.csproj",
         "packagesPath": "C:\\Users\\mrino\\.nuget\\packages\\",
-        "outputPath": "C:\\Git\\SportsStore\\SportsStore\\obj\\",
+        "outputPath": "C:\\Git\\SportsStore\\SportsStore\\SportsStore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
