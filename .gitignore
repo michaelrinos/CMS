@@ -6,3 +6,10 @@
 /obj/Debug/netcoreapp2.1/SportsStore.assets.cache
 /obj/Debug/netcoreapp2.1/SportsStore.RazorAssemblyInfo.cache
 /obj/Debug/netcoreapp2.1/SportsStore.RazorAssemblyInfo.cs
+/obj/project.assets.json
+/obj/SportsStore.csproj.nuget.cache
+/obj/SportsStore.csproj.nuget.dgspec.json
+/obj/SportsStore.csproj.nuget.g.props
+/obj/Debug/netcoreapp2.1/SportsStore.csproj.FileListAbsolute.txt
+/obj/Debug/netcoreapp2.1/SportsStore.csprojAssemblyReference.cache
+/bin/Debug/netcoreapp2.1/SportsStore.runtimeconfig.dev.json
