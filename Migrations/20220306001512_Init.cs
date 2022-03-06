@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SportsStore.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -42,6 +43,32 @@ namespace SportsStore.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.ProductID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Views",
+                columns: table => new
+                {
+                    RazerViewId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Location = table.Column<string>(nullable: true),
+<<<<<<<< HEAD:Migrations/20220306001512_Init.cs
+                    Model = table.Column<string>(nullable: true),
+                    HTMLContentId = table.Column<int>(nullable: false),
+                    HTMLContent = table.Column<string>(nullable: true),
+                    CSSContentId = table.Column<int>(nullable: false),
+                    CSSContent = table.Column<string>(nullable: true),
+                    JSContentId = table.Column<int>(nullable: false),
+                    JSContent = table.Column<string>(nullable: true),
+========
+                    Content = table.Column<string>(nullable: true),
+>>>>>>>> 3c0fe2095633752f06aa8b239b59819a350bb96e:Migrations/20220305215602_Initial.cs
+                    LastModified = table.Column<DateTimeOffset>(nullable: false),
+                    LastRequested = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Views", x => x.RazerViewId);
                 });
 
             migrationBuilder.CreateTable(
@@ -86,6 +113,9 @@ namespace SportsStore.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CartLine");
+
+            migrationBuilder.DropTable(
+                name: "Views");
 
             migrationBuilder.DropTable(
                 name: "Orders");

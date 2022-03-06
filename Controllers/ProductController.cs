@@ -11,6 +11,7 @@ namespace SportsStore.Controllers
     public class ProductController : Controller {
         private IProductRepository repository;
         public int PageSize = 4;
+        /*
         public ViewResult List(string category, int productPage = 1) => View(new ProductsListViewModel {
             Products = repository.Products
             .Where(p => category == null ||  p.Category == category)
@@ -35,5 +36,6 @@ namespace SportsStore.Controllers
             
             return View();
         }
+        */
     }
 }

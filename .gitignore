@@ -13,3 +13,10 @@
 /obj/Debug/netcoreapp2.1/SportsStore.csproj.FileListAbsolute.txt
 /obj/Debug/netcoreapp2.1/SportsStore.csprojAssemblyReference.cache
 /bin/Debug/netcoreapp2.1/SportsStore.runtimeconfig.dev.json
+/obj/*
+/.vs/SportsStore/config
+/.vs/SportsStore/
+/obj/Debug/netcoreapp2.1/SportsStore.TagHelpers.output.cache
+/bin/Debug/netcoreapp2.1/SportsStore.runtimeconfig.json
+/bin/Debug/netcoreapp2.1/SportsStore.deps.json
+/bin/Debug/netcoreapp2.1/appsettings.json

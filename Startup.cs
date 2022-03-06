@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SportsStore.Models;
@@ -40,7 +34,7 @@ namespace SportsStore {
             services.AddMvc();
             services.Configure<RazorViewEngineOptions>(opts =>
                 opts.FileProviders.Add(
-                    new DatabaseFileProvider(Configuration.GetConnectionString("DefaultConnection"))
+                    new DatabaseFileProvider(Configuration.GetConnectionString("CMSConnection"))
                 )
             );
             services.AddMemoryCache();
@@ -96,12 +90,50 @@ namespace SportsStore {
                 // */
 
                 routes.MapRoute(
+                    name: "Editor-M-L",
+                    template: "Editor/Mode-{mode}/Location-{location}",
+                    defaults: new {
+                        controller = "Dynamic",
+                        action = "Editor",
+                    });
+
+                routes.MapRoute(
+                    name: "Editor-L-M",
+                    template: "Editor/Location-{location}/Mode-{mode}",
+                    defaults: new {
+                        controller = "Dynamic",
+                        action = "Editor",
+                    });
+
+                routes.MapRoute(
+                    name: null,
+                    template: "Editor/Mode-{mode}",
+                    defaults: new {
+                        controller = "Dynamic",
+                        action = "Editor",
+                    });
+                routes.MapRoute(
+                    name: null,
+                    template: "Editor/Location-{location}",
+                    defaults: new {
+                        controller = "Dynamic",
+                        action = "Editor",
+                    });
+
+                routes.MapRoute(
+                    name: null,
+                    template: "Editor",
+                    defaults: new {
+                        controller = "Dynamic",
+                        action = "Editor",
+                    });
+
+                routes.MapRoute(
                     name: null,
                     template: "{action}",
                     defaults: new {
                         controller = "Dynamic",
                         action = "Index",
-                        productPage = 1
                     });
 
                 routes.MapRoute(
@@ -120,7 +152,7 @@ namespace SportsStore {
                     template: "{controller=Product}/{action=List}/{id?}");
             });
             // */
-            SeedData.EnsurePopulated(app);
+            SeedData.EnsurePopulated(app, Configuration.GetConnectionString("CMSConnection"));
         }
     }
 }

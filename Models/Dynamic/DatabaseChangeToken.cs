@@ -20,7 +20,7 @@ namespace SportsStore.Models {
         public bool HasChanged {
             get {
 
-                var query = "SELECT LastRequested, LastModified FROM Views WHERE Location = @Path;";
+                var query = "SELECT LastRequested, LastModified FROM RazerViews WHERE Location = @Path;";
                 try {
                     using (var conn = new SqlConnection(_connection))
                     using (var cmd = new SqlCommand(query, conn)) {
@@ -32,7 +32,9 @@ namespace SportsStore.Models {
                                 if (reader["LastRequested"] == DBNull.Value) {
                                     return false;
                                 } else {
-                                    return Convert.ToDateTime(reader["LastModified"]) > Convert.ToDateTime(reader["LastRequested"]);
+                                    var lastModified = ((DateTimeOffset)reader["lastModified"]).DateTime;
+                                    var lastRequested = Convert.ToDateTime(reader["LastRequested"]);
+                                    return lastModified > lastRequested;
                                 }
                             } else {
                                 return false;

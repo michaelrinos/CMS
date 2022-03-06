@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -7,24 +8,26 @@
           asp-href-exclude="**/*-reboot*,**/*-grid*" />
     <link rel="stylesheet"
           asp-href-include="/lib/font-awesome/css/*.css" />
+    <link rel="stylesheet"
+          asp-href-include="~/css/site.css" />
     <title>SportsStore</title>
     <script src="~/lib/jquery/dist/jquery.min.js"
-            asp-fallback-test="window.jQuery"
-            ></script>
+            asp-fallback-test="window.jQuery"></script>
     <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js">
     </script>
+    <script src="~/js/site.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid" id="main-Container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="/">Content Manager</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Features</a>
@@ -34,22 +37,31 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown link
+                            Settings
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            @{
+                                var value = HttpContextAccessor.HttpContext.Request.Cookies["Tab_Settings"];
+                                if (value == null) {
+                                    value = "Tabs (Columns)";
+                                }
+                            }
+
+                            <a class="editor-style dropdown-item @(value == "Columns" ? "active" : "") " href="/Editor/Mode-Columns">Columns</a>
+                            <a class="editor-style dropdown-item @(value == "Bottom Result" ? "active" : "") " href="/Editor/Mode-EditorBottomResult">Bottom Result</a>
+                            <a class="editor-style dropdown-item @(value == "Right Result" ? "active" : "") " href="/Editor/Mode-RightResult">Right Result</a>
+                            <a class="editor-style dropdown-item @(value == "Tabs (Columns)" ? "active" : "") " href="/Editor/Mode-TColumns">Tabs (Columns)</a>
+                            <a class="editor-style dropdown-item @(value == "Tabs (Rows)" ? "active" : "") " href="/Editor/Mode-TRows">Tabs (Rows)</a>
                         </div>
                     </li>
 
                 </ul>
                 <ul class="navbar-nav ">
                     <li>
-                <form class="form-inline" asp-controller="Dynamic" asp-action="Search" method="post">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                        <form class="form-inline" asp-controller="Dynamic" asp-action="Search" method="post">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                        </form>
                     </li>
 
 
@@ -58,9 +70,8 @@
         </nav>
     </div>
     <hr />
-    <div class="container">
+    <div class="">
         @RenderBody()
     </div>
 </body>
-
 </html>

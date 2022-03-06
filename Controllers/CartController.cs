@@ -14,6 +14,7 @@ namespace SportsStore.Controllers
             repository = repo;
             cart = cartService;
         }
+        /*
         public ViewResult Index(string returnUrl) {
             return View(new CartIndexViewModel {
                 Cart = cart,
@@ -37,5 +38,6 @@ namespace SportsStore.Controllers
             }
             return RedirectToAction("Index", new { returnUrl });
         }
+        */
     }
 }

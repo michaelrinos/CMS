@@ -21,6 +21,10 @@
     {
       "library": "twitter-bootstrap@4.4.0",
       "destination": "wwwroot/lib/twitter-bootstrap/"
+    },
+    {
+      "library": "js-beautify@1.11.0",
+      "destination": "wwwroot/lib/js-beautify/"
     }
   ]
 }

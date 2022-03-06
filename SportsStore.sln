@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsStore", "SportsStore.csproj", "{78A1BF4C-5ACF-4470-8D4D-679E393BACAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMS", "CMS.csproj", "{78A1BF4C-5ACF-4470-8D4D-679E393BACAE}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CMS", "..\RazerViews\CMS.sqlproj", "{C9544B1A-5C03-44F9-8C47-F80D5236F832}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,12 @@ Global
 		{78A1BF4C-5ACF-4470-8D4D-679E393BACAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78A1BF4C-5ACF-4470-8D4D-679E393BACAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78A1BF4C-5ACF-4470-8D4D-679E393BACAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9544B1A-5C03-44F9-8C47-F80D5236F832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9544B1A-5C03-44F9-8C47-F80D5236F832}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9544B1A-5C03-44F9-8C47-F80D5236F832}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C9544B1A-5C03-44F9-8C47-F80D5236F832}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9544B1A-5C03-44F9-8C47-F80D5236F832}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9544B1A-5C03-44F9-8C47-F80D5236F832}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

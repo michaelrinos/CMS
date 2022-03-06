@@ -9,7 +9,8 @@ namespace SportsStore.Models {
         public EFProductRepository(ApplicationDbContext ctx) {
             context = ctx;
         }
+        /*
         public IQueryable<Product> Products => context.Products;
-
+        */
     }
 }

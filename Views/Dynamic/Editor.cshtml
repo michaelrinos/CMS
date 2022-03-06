@@ -1,10 +1,9 @@
-﻿
+﻿@model RazerView
 @{
     ViewData["Title"] = "Editor";
 }
 
 <style>
-
     textarea {
         width: 100%;
         min-height: 100px;
@@ -23,8 +22,28 @@
         width: 100%;
         height: 35em;
     }
+    .codeHeader > .col-6:nth-child(2) {
+        padding: 0;
+    }
+    .codeHeader {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        border-radius: 0.25rem 0.25rem 0 0;
+    }
+    .codeHeaderText {
+        font-size: 1.5rem;
+    }
+    .btn-hiden {
+        padding: .5rem 2rem;
+    }
+    .codeHeader .btn-hiden {
+        visibility: hidden;
+    }
+    .codeHeader:hover .btn-hiden{
+        visibility: visible;
+    }
 </style>
-<html>
 
 <head>
     <title>Code Editor</title>
@@ -33,54 +52,72 @@
     <link href="~/lib/codemirror/theme/3024-night.css" rel="stylesheet" />
 </head>
 
-<body>
-    <form asp-action="SaveItem" method="post">
+<div class="container">
+    <form id="viewForm" asp-action="SaveView" method="post">
 
-        <div id="exTab1" class="container">
-
-            <ul class="nav nav-tabs " id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#HTML">HTML</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#CSS">CSS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#JavaScript">JavaScript</a>
-                </li>
-            </ul>
-
-            <div class="tab-content" id="tabs">
-                <div class="tab-pane in active" id="HTML">
-                    <textarea class="" id="html" placeholder="HTML"></textarea>
-                </div>
-                <div class="tab-pane fade" id="CSS">
-                    <textarea id="css" placeholder="CSS"></textarea>
-                </div>
-                <div class="tab-pane fade" id="JavaScript">
-                    <textarea id="js" placeholder="JavaScript"></textarea>
-                </div>
-            </div>
-
-
+        <textarea class="d-none" asp-for="Content"> </textarea>
+        <div class="form-group">
+            <label asp-for="Location"></label>
+            <input class="form-control" type="text" asp-for="Location" />
         </div>
 
+        <div class="form-group">
+            <label asp-for="Model"></label>
+            <input class="form-control" type="text" asp-for="Model" />
+        </div>
+        
+
+        <ul class="nav nav-tabs " id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#HTML">HTML</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#CSS">CSS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#JavaScript">JavaScript</a>
+            </li>
+        </ul>
+
+
+        <div id="codeParent" class="">
+        <div class="tab-content" id="tabs">
+            <div class="tab-pane in active" id="HTML">
+                <div class="row codeHeader">
+                    <div class="col-6">
+                        <div class="codeHeaderText">HTML</div>
+                    </div>
+                    <div class="col-6">
+                        <button id="tidyHtml" type="button" data-CodeMirror="" class="btn btn-secondary btn-hiden float-right" onclick="autoFormatSelection(this);">Tidy</button>
+                    </div>
+                </div>
+                <textarea asp-for="@Model.HTMLContent"></textarea>
+            </div>
+            <div class="tab-pane" id="CSS">
+                <h4 class="codeHeader">CSS</h4>
+                <textarea asp-for="@Model.CSSContent"></textarea>
+            </div>
+            <div class="tab-pane" id="JavaScript">
+                <h4 class="codeHeader">JavaScript</h4>
+                <textarea asp-for="@Model.JSContent"></textarea>
+            </div>
+        </div>
+        </div>
         <hr>
         <hr>
         <iframe id="code"></iframe>
         <button type="submit">Save</button>
+
     </form>
+</div>
 
-</body>
-
-</html>
 <script src="~/lib/codemirror/codemirror.js"></script>
 <script src="~/lib/codemirror/mode/css/css.min.js"></script>
 <script src="~/lib/codemirror/mode/xml/xml.min.js"></script>
 <script src="~/lib/codemirror/mode/javascript/javascript.min.js"></script>
 <script>
 
-    var editorHTML = CodeMirror.fromTextArea(document.getElementById("html"), {
+    var editorHTML = CodeMirror.fromTextArea(document.getElementById("HTMLContent"), {
         mode: "xml",
         htmlMode: true,
         lineNumbers: true,
@@ -88,14 +125,15 @@
         value: "<h1> Welcome </h1>",
         theme: "3024-night"
     });
+    //$('#tidyHtml').data("CodeMirror", editorHTML);
 
-    var editorCSS = CodeMirror.fromTextArea(document.getElementById("css"), {
+    var editorCSS = CodeMirror.fromTextArea(document.getElementById("CSSContent"), {
         mode: "text/css",
         lineNumbers: true,
         matchBrackets: true,
         theme: "3024-night"
     });
-    var editorJavaScript = CodeMirror.fromTextArea(document.getElementById("js"), {
+    var editorJavaScript = CodeMirror.fromTextArea(document.getElementById("JSContent"), {
         mode: "javascript",
         lineNumbers: true,
         matchBrackets: true,
@@ -105,42 +143,61 @@
     editorHTML.refresh();
     editorJavaScript.refresh();
     // */
+    /*
     editorHTML.on("keyup", documentChanges);
     editorCSS.on("change", documentChanges);
     editorJavaScript.on("change", documentChanges);
+    // */
     $(document).ready(function () {
         $("#code").on("load", function () {
             var head = $("#code").contents().find("head");
 
-            var jquery = '<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">';
-            var bootstrapcss = '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">';
-            var bootstrapjs = '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"><\/script>';
             /*
             var jquery = '<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">';
             var bootstrapcss = '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">';
             var bootstrapjs = '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"><\/script>';
+            var jquery = '<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">';
+            var bootstrapcss = '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">';
+            var bootstrapjs = '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"><\/script>';
             // */
+            var bootstrapcss = '<link rel="stylesheet" href="/lib/twitter-bootstrap/css/bootstrap_dark.min.css">';
+            var fontawesome = '<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">';
+            var jquery = '<script src="/lib/jquery/dist/jquery.min.js"><\/script>';
+            var bootstrapjs = '<script src="/lib/twitter-bootstrap/js/bootstrap.min.js"><\/script>';
 
 
 
-            $(head).append($("<link/>", { rel: "stylesheet", href: "~/lib/twitter-bootstrap/css/bootstrap_dark.min.css", type: "text/css" } ));
+            $("#code").contents().find("head").append(bootstrapcss);
+            $("#code").contents().find("head").append(fontawesome);
+            $("#code").contents().find("head").append(jquery);
+            $("#code").contents().find("head").append(bootstrapjs);
+            /*
+            head.append(bootstrapcss);
+            head.append(fontawesome);
+            head.append(jquery);
+            head.append(bootstrapjs);
             //$(head).append($("<link/>", { rel: "stylesheet", href: "/lib/font-awesome/css/*.css" , type: "text/css" } ));
             $(head).append($("<script/>", { src: "~/lib/jquery/dist/jquery.min.js"} ));
+            // */
         });
     });
+    window.setInterval(function () {
+        documentChanges();
+    }, 5000);
+
+    $("#viewForm").submit(documentChanges);
 
     function documentChanges() {
 
         var html = editorHTML.getValue();
-
         var css = editorCSS.getValue();
         var js = editorJavaScript.getValue();
+
+        $("#Content").val("<style>" + css + "</style>" + html + "<script>" + js + "<\/script>");
         var code = document.getElementById("code").contentWindow.document;
         code.open();
         //code.writeln(html);
         if (html)
-
-
             code.writeln(html + "<style>" + css + "</style>" + "<script>" + js + "<\/script>");
         code.close();
     };

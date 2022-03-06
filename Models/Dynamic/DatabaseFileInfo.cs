@@ -42,19 +42,40 @@ namespace SportsStore.Models {
         }
 
         private void GetView(string connection, string viewPath) {
-            var query = @"SELECT Content, LastModified FROM Views WHERE Location = @Path;
-                    UPDATE Views SET LastRequested = GetUtcDate() WHERE Location = @Path";
+            var provider = new SportsStore.Data.ExampleDataProvider(connection);
+            var view = provider.GetRazerView(viewPath) ?? provider.GetRazerViewLikeLocation(viewPath);
+            if (view == default(RazerView))
+                return;
+
+            _exists = true;
+            _contents = view.Content;
+            _viewContent = view.ContentBytes;
+            _lastModified = view.LastModified;
+
+            // */
+            /*
+            if (viewPath.Contains("Views/Dynamic")) {
+                var li = viewPath.LastIndexOf('/') + 1;
+                viewPath = viewPath.Substring(li, viewPath.Length - li);
+            }
+            var query = @"SELECT rv.*, js.JSContent, css.CSSContent, html.HTMLContent from [dbo].[RazerViews] rv
+                inner join [dbo].[JSContent] js on js.JSContentId = rv.JSContentId
+                inner join [dbo].[CSSContent] css on css.CSSContentId = rv.CSSContentId
+                inner join [dbo].[HTMLContent] html on html.HTMLContentId = rv.HTMLContentId
+            where Location = @Location";
+            //var query = @"SELECT Content, LastModified FROM Views WHERE Location = @Path;
+             //       UPDATE Views SET LastRequested = GetUtcDate() WHERE Location = @Path";
             try {
                 using (var conn = new SqlConnection(connection))
                 using (var cmd = new SqlCommand(query, conn)) {
-                    cmd.Parameters.AddWithValue("@Path", viewPath);
+                    cmd.Parameters.AddWithValue("@Location", viewPath);
                     conn.Open();
                     using (var reader = cmd.ExecuteReader()) {
                         _exists = reader.HasRows;
                         if (_exists) {
                             reader.Read();
-                            _contents = reader["Content"].ToString();
-                            _viewContent = Encoding.UTF8.GetBytes(reader["Content"].ToString());
+                            _contents = reader["HTMLContent"].ToString();
+                            _viewContent = Encoding.UTF8.GetBytes(reader["HTMLContent"].ToString());
                             _lastModified = Convert.ToDateTime(reader["LastModified"]);
                         }
                     }
@@ -63,6 +84,7 @@ namespace SportsStore.Models {
 
                 // if something went wrong, Exists will be false
             }
+            // */
         }
     }
 }

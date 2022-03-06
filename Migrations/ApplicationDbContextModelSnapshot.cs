@@ -99,13 +99,25 @@ namespace SportsStore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Content");
+                    b.Property<string>("CSSContent");
+
+                    b.Property<int>("CSSContentId");
+
+                    b.Property<string>("HTMLContent");
+
+                    b.Property<int>("HTMLContentId");
+
+                    b.Property<string>("JSContent");
+
+                    b.Property<int>("JSContentId");
 
                     b.Property<DateTimeOffset>("LastModified");
 
                     b.Property<DateTime?>("LastRequested");
 
                     b.Property<string>("Location");
+
+                    b.Property<string>("Model");
 
                     b.HasKey("RazerViewId");
 
