@@ -10,7 +10,7 @@ using SportsStore.Models;
 namespace CMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220306033445_initial")]
+    [Migration("20220306052328_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
