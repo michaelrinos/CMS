@@ -18,7 +18,7 @@ namespace SportsStore.Controllers {
             }
             if (ModelState.IsValid) {
                 order.Lines = cart.Lines.ToArray();
-                repository.SaveOrder(order);
+                //repository.SaveOrder(order);
                 return RedirectToAction(nameof(Completed));
             } else {
                 return View(order);

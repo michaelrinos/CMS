@@ -7,3 +7,6 @@
 /obj/Debug/netcoreapp2.1/SportsStore.RazorAssemblyInfo.cache
 /obj/Debug/netcoreapp2.1/SportsStore.RazorAssemblyInfo.cs
 /obj/*
+/.vs/SportsStore/config
+/.vs/SportsStore/
+/obj/Debug/netcoreapp2.1/SportsStore.TagHelpers.output.cache

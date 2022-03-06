@@ -10,8 +10,8 @@ using SportsStore.Models;
 namespace SportsStore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200409003309_ChangeContent")]
-    partial class ChangeContent
+    [Migration("20220306001512_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -101,13 +101,25 @@ namespace SportsStore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Content");
+                    b.Property<string>("CSSContent");
+
+                    b.Property<int>("CSSContentId");
+
+                    b.Property<string>("HTMLContent");
+
+                    b.Property<int>("HTMLContentId");
+
+                    b.Property<string>("JSContent");
+
+                    b.Property<int>("JSContentId");
 
                     b.Property<DateTimeOffset>("LastModified");
 
-                    b.Property<DateTime>("LastRequested");
+                    b.Property<DateTime?>("LastRequested");
 
                     b.Property<string>("Location");
+
+                    b.Property<string>("Model");
 
                     b.HasKey("RazerViewId");
 

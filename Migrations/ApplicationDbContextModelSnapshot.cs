@@ -117,6 +117,8 @@ namespace SportsStore.Migrations
 
                     b.Property<string>("Location");
 
+                    b.Property<string>("Model");
+
                     b.HasKey("RazerViewId");
 
                     b.ToTable("Views");

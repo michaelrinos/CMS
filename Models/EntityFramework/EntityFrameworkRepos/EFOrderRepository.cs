@@ -12,6 +12,7 @@ namespace SportsStore.Models {
             context = cntx;
         }
 
+        /*
         public IQueryable<Order> Orders => context.Orders
             .Include(o => o.Lines)
             .ThenInclude(l => l.Product);
@@ -23,6 +24,7 @@ namespace SportsStore.Models {
             }
             context.SaveChanges();
         }
+        */
 
     }
 }
