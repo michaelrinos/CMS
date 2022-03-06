@@ -83,5 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="CMS.publish.xml" />
+    <None Include="RPI.publish.xml" />
   </ItemGroup>
 </Project>
