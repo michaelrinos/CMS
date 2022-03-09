@@ -8,7 +8,7 @@ using System.Collections;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 
-namespace SportsStore.Data {
+namespace Reflection {
 	/// <summary>
 	/// Class for data manipulation
 	/// </summary>

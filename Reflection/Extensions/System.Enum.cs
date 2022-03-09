@@ -6,8 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SportsStore.Extensions
-{
+namespace Reflection {
 	public static partial class SystemExtensions
 	{
 		/// <summary>

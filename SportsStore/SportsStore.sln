@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMS", "CMS.csproj", "{78A1B
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CMS Database", "..\RazerViews\CMS Database.sqlproj", "{C9544B1A-5C03-44F9-8C47-F80D5236F832}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflection", "..\Reflection\Reflection.csproj", "{A5B1C573-1B98-4663-9A56-28A8B99BBC0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{C9544B1A-5C03-44F9-8C47-F80D5236F832}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9544B1A-5C03-44F9-8C47-F80D5236F832}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C9544B1A-5C03-44F9-8C47-F80D5236F832}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A5B1C573-1B98-4663-9A56-28A8B99BBC0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5B1C573-1B98-4663-9A56-28A8B99BBC0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5B1C573-1B98-4663-9A56-28A8B99BBC0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5B1C573-1B98-4663-9A56-28A8B99BBC0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

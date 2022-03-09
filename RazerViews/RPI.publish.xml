@@ -4,7 +4,7 @@
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseName>CMS</TargetDatabaseName>
     <DeployScriptFileName>CMS Database.sql</DeployScriptFileName>
-    <TargetConnectionString>Data Source=192.168.1.151;Persist Security Info=True;User ID=SA;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False</TargetConnectionString>
+    <TargetConnectionString>Data Source=192.168.1.49;Persist Security Info=True;User ID=SA;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
 </Project>

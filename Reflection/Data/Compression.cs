@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace SportsStore.Data {
+namespace Reflection {
 
     public static class Compression {
         public static byte[] SerializeAndCompressToBinary<T>(this T item) {

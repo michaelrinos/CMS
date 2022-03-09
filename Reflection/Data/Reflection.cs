@@ -6,8 +6,9 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using Reflection;
 
-namespace SportsStore.Data {
+namespace Reflection {
 	public static class Reflection {
 		/// <summary>
 		///     Updates the properties of item with the input data row

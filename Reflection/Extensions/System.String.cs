@@ -7,8 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace SportsStore.Extensions
-{
+namespace Reflection {
 	public static partial class SystemExtensions
 	{
 		private static Regex _htmlPattern = new Regex("<(.|\n)*?>", RegexOptions.Compiled);

@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 
-namespace SportsStore.Extensions
-{
+namespace Reflection {
 	public static partial class SystemExtensions
 	{
 		public static bool IsEmpty<T>(this List<T> list)

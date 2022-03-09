@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
-using System.Data.SqlClient;
 using System.Data;
 using Newtonsoft.Json;
 using System.Data.Common;
+using System.Data.SqlClient;
 
-namespace SportsStore.Data {
+namespace Reflection {
     /// <summary>
     /// Class for data manipulation
     /// </summary>
@@ -96,28 +96,6 @@ namespace SportsStore.Data {
                         if (attr.MaxLength > 0 && value is String) {
                             value = value.ToString().Substring(0, attr.MaxLength);
                         }
-                        /*else if (attr.Serialize == SerializationType.Xml)
-                        {
-                            // assume primitive type, handle serailization with this attribute
-                            //
-                            // TODO: implement deserialization from Xml in Reflector
-                            //
-                            var serializer = new XmlSerializer(prop.PropertyType);
-                            var settings = new XmlWriterSettings()
-                            {
-                                Encoding = Encoding.UTF8,
-                                Indent = false,
-                                OmitXmlDeclaration = false,
-                            };
-
-                            using (var textWriter = new StringWriter())
-                            {
-                                using (var xmlWriter = XmlWriter.Create(textWriter, settings))
-                                    serializer.Serialize(xmlWriter, value);
-
-                                value = textWriter.ToString();
-                            }
-                        }*/
                         else if (attr.Serialize == SerializationType.Json) {
                             value = JsonConvert.SerializeObject(value);
                         }
