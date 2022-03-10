@@ -1,11 +1,10 @@
-﻿using SportsStore.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace SportsStore {
+namespace Reflection {
 	public static class Enumr {
 		public static IEnumerable<T> GetAttribute<T>(FieldInfo fi) {
 			var val = (Enum)fi.GetValue(null);

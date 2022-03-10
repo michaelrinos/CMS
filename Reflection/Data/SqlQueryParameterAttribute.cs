@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SportsStore.Data {
+namespace Reflection {
 	public enum SerializationType {
 		None = 0,
 		//Xml,

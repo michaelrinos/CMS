@@ -1,7 +1,6 @@
 ﻿using System.Net.Http;
 
-namespace SportsStore.Extensions
-{
+namespace Reflection {
 
 	public static partial class SystemExtensions
 	{

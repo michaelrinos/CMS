@@ -7,8 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace SportsStore.Extensions
-{
+namespace Reflection {
 	public static partial class LinqExtensions
 	{
 		public static IEnumerable<TSource> DistinctBy<TSource, TKey>

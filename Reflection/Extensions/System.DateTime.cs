@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SportsStore.Extensions
-{
+namespace Reflection {
 	public static partial class SystemExtensions
 	{
 		public static string FormatMonthDay(this DateTime input)

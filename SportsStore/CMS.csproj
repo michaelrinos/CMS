@@ -16,6 +16,11 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="Views\Shared\Headers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Reflection\Reflection.csproj" />
   </ItemGroup>
 
 </Project>
