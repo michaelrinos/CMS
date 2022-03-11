@@ -23,14 +23,16 @@ namespace SportsStore.Controllers
 
         private IViewRepository repository;
         private readonly IConfiguration _Config;
+        private readonly ICMSService cmsService;
 
         #endregion // Fields
 
         #region Constructor
 
-        public DynamicController(IViewRepository repo, IConfiguration config ) {
+        public DynamicController(IViewRepository repo, IConfiguration config, ICMSService CMSService) {
             repository = repo;
             _Config = config;
+            this.cmsService = CMSService;
         }
 
         #endregion // Constructor
@@ -45,8 +47,10 @@ namespace SportsStore.Controllers
         }
 
         #region CRUD
-        public IActionResult Read()
+        public async Task<IActionResult> Read()
         {
+            var result = await this.cmsService.ViewsGetAll();
+            
             return View();
         }
 

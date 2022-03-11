@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SportsStore.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Razor;
+using SportsStore.Data;
 
 namespace SportsStore {
     public class Startup {
@@ -30,6 +31,7 @@ namespace SportsStore {
             services.AddTransient<IViewRepository, EFViewsRepository>();
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<ICMSService, ExampleDataProvider>();
 
             services.AddMvc();
             services.Configure<RazorViewEngineOptions>(opts =>
