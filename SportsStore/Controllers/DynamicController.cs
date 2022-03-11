@@ -44,6 +44,15 @@ namespace SportsStore.Controllers
             return View(view, new RazerView());
         }
 
+        #region CRUD
+        public IActionResult Read()
+        {
+            return View();
+        }
+
+
+        #endregion // CRUD
+
         public IActionResult Editor(string mode = "Editor", string location = "") {
             
             if (location == string.Empty && mode == string.Empty) { // We are creating a new model and we don't care about the view mode
@@ -64,7 +73,6 @@ namespace SportsStore.Controllers
         }
 
         public IActionResult Search(string searchItems) {
-
             return View();
         }
 

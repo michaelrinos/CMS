@@ -25,6 +25,10 @@
     {
       "library": "js-beautify@1.11.0",
       "destination": "wwwroot/lib/js-beautify/"
+    },
+    {
+      "library": "ag-grid@25.1.0",
+      "destination": "wwwroot/lib/ag-grid/"
     }
   ]
 }

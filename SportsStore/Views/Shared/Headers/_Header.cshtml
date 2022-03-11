@@ -1,0 +1,55 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+<div class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a href="../" class="navbar-brand">CMS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../help/">Temp</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "Dynamic")">Index</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Editors
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        @{
+                            var value = HttpContextAccessor.HttpContext.Request.Cookies["Tab_Settings"];
+                            if (value == null)
+                            {
+                                value = "Tabs (Columns)";
+                            }
+                        }
+
+                        <a class="editor-style dropdown-item @(value == "Columns" ? "active" : "") " href="/Editor/Mode-Columns">Columns</a>
+                        <a class="editor-style dropdown-item @(value == "Bottom Result" ? "active" : "") " href="/Editor/Mode-EditorBottomResult">Bottom Result</a>
+                        <a class="editor-style dropdown-item @(value == "Right Result" ? "active" : "") " href="/Editor/Mode-RightResult">Right Result</a>
+                        <a class="editor-style dropdown-item @(value == "Tabs (Columns)" ? "active" : "") " href="/Editor/Mode-TColumns">Tabs (Columns)</a>
+                        <a class="editor-style dropdown-item @(value == "Tabs (Rows)" ? "active" : "") " href="/Editor/Mode-TRows">Tabs (Rows)</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-md-auto">
+                <li>
+                    <div class="container-fluid">
+                        <form class="d-flex" asp-action="Search" asp-controller="Dynamic">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a target="_blank" rel="noopener" class="nav-link" href="#"><i class="fa fa-github"></i> GitHub</a>
+                </li>
+                <li class="nav-item">
+                    <a target="_blank" rel="noopener" class="nav-link" href="#"><i class="fa fa-twitter"></i> Twitter</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

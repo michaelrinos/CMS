@@ -47,14 +47,14 @@ namespace SportsStore.Models {
         #region Private
 
         /// <summary>
-        /// Determines if a file is a virtual (db) file or a real file
+        /// Determines if a file is a virtual (db) file or a real file      
         /// by looking at the path
         /// </summary>
         /// <param name="v"></param>
         /// <param name="subpath"></param>
         /// <returns></returns>
         private bool IsVirtualPath(string subpath) {
-            return subpath.Contains("/Views/Dynamic");
+            return subpath.Contains("/Views/Dynamic") || subpath.Contains("/Views/Shared/");
         }
 
         #endregion // Private 

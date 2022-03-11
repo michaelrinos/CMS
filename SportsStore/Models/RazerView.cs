@@ -41,7 +41,7 @@ namespace SportsStore.Models {
         public int HTMLContentId { get; set; }
         public string HTMLContent { get => _Html ?? ""; set => _Html = value; }
         public int CSSContentId { get; set; }
-        public string CSSContent { get => _Css.Contains("<style>") ? "<style>" + _Css + "</style>" : _Css ; set => _Css = value; }
+        public string CSSContent { get =>  _Css == null? null : _Css.Contains("<style>") ? "<style>" + _Css + "</style>" : _Css ; set => _Css = value; }
         public int JSContentId { get; set; }
         public string JSContent { get => _Js ?? "" ; set => _Js = value; }
         [NotMapped]
