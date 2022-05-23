@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 using Reflection;
 
 namespace SportsStore.Data {
+	public class CMService : TransactionService, ICMSService
+    {
+
+    }
     public class ExampleDataProvider : SqlDataProvider, ICMSService {
-		internal ExampleDataProvider(string connectionString) :
+		public ExampleDataProvider(string connectionString) :
             base(connectionString) { }
 
 

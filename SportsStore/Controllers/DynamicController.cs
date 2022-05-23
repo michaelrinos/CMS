@@ -49,7 +49,9 @@ namespace SportsStore.Controllers
         #region CRUD
         public async Task<IActionResult> Read()
         {
-            var result = await this.cmsService.ViewsGetAll();
+            
+            //var result = await this.cmsService.ViewsGetAll();
+
             
             return View();
         }

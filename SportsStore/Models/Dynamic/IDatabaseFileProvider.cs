@@ -2,6 +2,5 @@
 
 namespace SportsStore {
     public interface ICMSService {
-        Task ViewsGetAll();
     }
 }

@@ -30,12 +30,11 @@ namespace Reflection {
 
 		protected abstract Dictionary<string, object> ProcessParameter(object parameterObject, ref DbParameterCollection dbParameters);
 
-		protected DataProvider(string connectionString) {
+		public DataProvider(string connectionString) {
 			this.ConnectionString = connectionString;
 			this.Timeout = _DEFAULT_TIMEOUT;
 		}
 
-		//TODO: rg: no way to share a transaction across data providers... do we need a method like this?
 		/// <summary>
 		/// Use with caution.
 		/// </summary>

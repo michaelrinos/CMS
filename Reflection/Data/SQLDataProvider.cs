@@ -13,7 +13,7 @@ namespace Reflection {
     /// </summary>
     public abstract class SqlDataProvider : DataProvider {
 
-        protected SqlDataProvider(string connectionString)
+        public SqlDataProvider(string connectionString)
             : base(connectionString) {
         }
 

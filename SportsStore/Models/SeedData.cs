@@ -6,100 +6,120 @@ using Microsoft.EntityFrameworkCore;
 using SportsStore.Data;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace SportsStore.Models {
-    public static class SeedData {
-        public static void EnsurePopulated(IApplicationBuilder app, string connectionString) {
+namespace SportsStore.Models
+{
+    public static class SeedData
+    {
+        public static void EnsurePopulated(IApplicationBuilder app, string connectionString)
+        {
             ApplicationDbContext context = app.ApplicationServices.GetRequiredService<ApplicationDbContext>();
             context.Database.Migrate();
             //EnsureProducts(context);
             EnsureViews(context);
-            
+
             EnsureViewsCMS(connectionString);
         }
 
-        private static void EnsureViewsCMS(string con) {
-            var p = new ExampleDataProvider(con); 
-            if (! (p.GetRazerViewCount() > 0 ) ) {
-                var v = new RazerView() {
-                    Location = "Thanks.cshtml",
-                    HTMLContent = "  <div class=\"container\">    <div class=\"row text-center\">      <div class=\"col-12 yellow\">        <h1>       Congrats the view was saved!        </h1>      </div>      <div class=\"col-8 offset-2\">        <h4>You can click           <a href=\"/DisplayView?view=@Model\">here </a>          to dsplay the view.        </h4>      </div>    </div>      </div>",
-                    CSSContent = ".yellow { color: yellow;",
-                    Model = "@Model string",
-                    JSContent = string.Empty
-                };
-                var t = new RazerView()
+        private static void EnsureViewsCMS(string con)
+        {
+            ExampleDataProvider p = null;
+            try
+            {
+                p = new ExampleDataProvider(con);
+                if (!(p.GetRazerViewCount() > 0))
                 {
-                    Location = "/Headers/_Header.cshtml",
-                    LastRequested = null,
-                    LastModified = DateTime.Now,
-                    Model = "@Model string",
-                    HTMLContent = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">" +
-                           "<div class=\"container-fluid\">" +
-   "<a class=\"navbar-brand\" href=\"#\">Navbar</a>" +
-   "<button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">" +
-     "<span class=\"navbar-toggler-icon\"></span>" +
-   "</button>" +
-   "<div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">" +
-     "<ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">" +
-       "<li class=\"nav-item\">" +
-         "<a class=\"nav-link active\" aria-current=\"page\" href=\"#\">Home</a>" +
-       "</li>" +
-       "<li class=\"nav-item\">" +
-         "<a class=\"nav-link\" href=\"#\">Link</a>" +
-       "</li>" +
-       "<li class=\"nav-item dropdown\">" +
-         "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">" +
-           "Dropdown" +
-         "</a>" +
-         "<ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">" +
-           "< li><a class=\"dropdown-item\" href=\"#\">Action</a></li>" +
-           "< li><a class=\"dropdown-item\" href=\"#\">Another action</a></li>" +
-           "< li><hr class=\"dropdown-divider\"></li>" +
-           "< li><a class=\"dropdown-item\" href=\"#\">Something else here</a></li>" +
+                    var v = new RazerView()
+                    {
+                        Location = "Thanks.cshtml",
+                        HTMLContent = "  <div class=\"container\">    <div class=\"row text-center\">      <div class=\"col-12 yellow\">        <h1>       Congrats the view was saved!        </h1>      </div>      <div class=\"col-8 offset-2\">        <h4>You can click           <a href=\"/DisplayView?view=@Model\">here </a>          to dsplay the view.        </h4>      </div>    </div>      </div>",
+                        CSSContent = ".yellow { color: yellow;",
+                        Model = "@Model string",
+                        JSContent = string.Empty
+                    };
+                    var t = new RazerView()
+                    {
+                        Location = "/Headers/_Header.cshtml",
+                        LastRequested = null,
+                        LastModified = DateTime.Now,
+                        Model = "@Model string",
+                        HTMLContent = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">" +
+                               "<div class=\"container-fluid\">" +
+       "<a class=\"navbar-brand\" href=\"#\">Navbar</a>" +
+       "<button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">" +
+         "<span class=\"navbar-toggler-icon\"></span>" +
+       "</button>" +
+       "<div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">" +
+         "<ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">" +
+           "<li class=\"nav-item\">" +
+             "<a class=\"nav-link active\" aria-current=\"page\" href=\"#\">Home</a>" +
+           "</li>" +
+           "<li class=\"nav-item\">" +
+             "<a class=\"nav-link\" href=\"#\">Link</a>" +
+           "</li>" +
+           "<li class=\"nav-item dropdown\">" +
+             "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">" +
+               "Dropdown" +
+             "</a>" +
+             "<ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">" +
+               "< li><a class=\"dropdown-item\" href=\"#\">Action</a></li>" +
+               "< li><a class=\"dropdown-item\" href=\"#\">Another action</a></li>" +
+               "< li><hr class=\"dropdown-divider\"></li>" +
+               "< li><a class=\"dropdown-item\" href=\"#\">Something else here</a></li>" +
+             "</ul>" +
+           "</li>" +
+           "<li class=\"nav-item\">" +
+             "<a class=\"nav-link disabled\" href=\"#\" tabindex=\"-1\" aria-disabled=\"true\">Disabled</a>" +
+           "</li>" +
          "</ul>" +
-       "</li>" +
-       "<li class=\"nav-item\">" +
-         "<a class=\"nav-link disabled\" href=\"#\" tabindex=\"-1\" aria-disabled=\"true\">Disabled</a>" +
-       "</li>" +
-     "</ul>" +
-     "<form class=\"d-flex\">" +
-       "<input class=\"form-control me-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">" +
-       "<button class=\"btn btn-outline-success\" type=\"submit\">Search</button>" +
-     "</form>" +
-   "</div>" +
- "</div>" +
-"</nav>"
-                };
+         "<form class=\"d-flex\">" +
+           "<input class=\"form-control me-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">" +
+           "<button class=\"btn btn-outline-success\" type=\"submit\">Search</button>" +
+         "</form>" +
+       "</div>" +
+     "</div>" +
+    "</nav>"
+                    };
 
-                p.CreateRazerView(v);
-                p.CreateRazerView(t);
-                v.Location = "NotSpecified.cshtml";
-                v.HTMLContent = @"<h1>Oops.</h1><p>Looks like you forgot to specify which view we should show you.</p>";
-                v.CSSContent = string.Empty;
-                v.JSContent = string.Empty;
-                v.Model = string.Empty;
-                
-                
+                    p.CreateRazerView(v);
+                    p.CreateRazerView(t);
+                    v.Location = "NotSpecified.cshtml";
+                    v.HTMLContent = @"<h1>Oops.</h1><p>Looks like you forgot to specify which view we should show you.</p>";
+                    v.CSSContent = string.Empty;
+                    v.JSContent = string.Empty;
+                    v.Model = string.Empty;
 
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ex = ex;
             }
 
         }
 
-        private static void EnsureViews(ApplicationDbContext context) {
-            if (!context.Views.Any()) {
+        private static void EnsureViews(ApplicationDbContext context)
+        {
+            if (!context.Views.Any())
+            {
                 context.Views.AddRange(
-                    new RazerView() {
+                    new RazerView()
+                    {
                         Location = "/NotSpecified.cshtml",
                         LastRequested = null,
                         LastModified = DateTime.Now,
                         HTMLContent = @"<h1>Oops.</h1><p>Looks like you forgot to specify which view we should show you.</p>"
                     },
-                    new RazerView() {
+                    new RazerView()
+                    {
                         Location = "/Editor.cshtml",
                         LastRequested = null,
                         LastModified = DateTime.Now
                     },
-                    new RazerView() {
+                    new RazerView()
+                    {
                         Location = "/EditorBottomResult.cshtml",
                         LastRequested = null,
                         LastModified = DateTime.Now,
@@ -112,7 +132,7 @@ namespace SportsStore.Models {
                         Location = "/Headers/_Header.cshtml",
                         LastRequested = null,
                         LastModified = DateTime.Now,
-                        HTMLContent = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">"+
+                        HTMLContent = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">" +
                             "<div class=\"container-fluid\">" +
     "<a class=\"navbar-brand\" href=\"#\">Navbar</a>" +
     "<button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">" +
@@ -122,8 +142,8 @@ namespace SportsStore.Models {
       "<ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">" +
         "<li class=\"nav-item\">" +
           "<a class=\"nav-link active\" aria-current=\"page\" href=\"#\">Home</a>" +
-        "</li>"+
-        "<li class=\"nav-item\">"+
+        "</li>" +
+        "<li class=\"nav-item\">" +
           "<a class=\"nav-link\" href=\"#\">Link</a>" +
         "</li>" +
         "<li class=\"nav-item dropdown\">" +

@@ -9,7 +9,7 @@
 	@Location		NVARCHAR(MAX),
 	@InsertBy		NVARCHAR(50),
 	@Model			NVARCHAR(100),
-	@LastModified	DateTimeOffset
+	@LastModified	DateTime
 
 AS
 
@@ -32,7 +32,7 @@ AS
 	where HTMLContentId = @HTMLContentId
 
 	update [dbo].[RazerViews]
-	set LastModified	=	GETUTCDATE(),
+	set LastModified	=	GETDATE(),
 		Model			=	@Model
 	where RazerViewId	=	@RazerViewId;
 go
