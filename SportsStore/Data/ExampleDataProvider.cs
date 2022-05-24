@@ -6,11 +6,15 @@ using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using Reflection;
+using Reflection.Services;
+using Reflection.TutorCom.Core.Data;
 
 namespace SportsStore.Data {
-	public class CMService : TransactionService, ICMSService
+    public class CMService : TransactionalService, ICMSService
     {
-
+        public CMService(ISqlDataProvider dataProvider) : base(dataProvider)
+        {
+        }
     }
     public class ExampleDataProvider : SqlDataProvider, ICMSService {
 		public ExampleDataProvider(string connectionString) :
